@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodify – Visual Music Identity Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-note">♪</div>
+        <div class="floating-note">♫</div>
+        <div class="floating-note">♬</div>
+        <div class="floating-note"></div>
+        <div class="floating-note">🎶</div>
+        <div class="floating-note">♪</div>
+        <div class="floating-note">♫</div>
+        <div class="floating-note"></div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">🎧</span>
+            <h1>Moodify</h1>
+        </div>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <button class="btn nav-start-btn" onclick="scrollToForm()">Get Started</button>
+        </nav>
+        <button class="hamburger" onclick="toggleMenu()"></button>
+    </header>
+
+    <!-- ===== LANDING PAGE ===== -->
+    <section class="landing" id="home">
+        <div class="hero">
+            <div class="hero-badge">✨ Discover Your Music Identity</div>
+            <h1 class="hero-title">
+                <span class="typing-text" id="typingText"></span>
+                <span class="cursor">|</span>
+            </h1>
+            <p class="hero-subtitle">Select your mood → dynamically generates a music/vibe dashboard</p>
+            <div class="hero-buttons">
+                <button class="btn primary-btn pulse-btn" onclick="scrollToForm()">
+                    🎨 Create Your Card
+                </button>
+                <button class="btn secondary-btn" onclick="scrollToHow()">
+                    Learn More ↓
+                </button>
+            </div>
+
+            <!-- Animated Music Visualizer -->
+            <div class="visualizer">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" data-target="8">0</span>
+                <span class="stat-label">Mood Vibes</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="100">0</span>
+                <span class="stat-label">% Free</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="1">0</span>
+                <span class="stat-label">Click to Create</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">✨ Why Moodify?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎴</div>
+                <h3>Beautiful Cards</h3>
+                <p>Generate aesthetic "vibe receipts" with unique gradients for every mood.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⬇️🧧</div>
+                <h3>Download & Share</h3>
+                <p>Export your music identity card as a PNG and share it anywhere.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎭</div>
+                <h3>8 Unique Moods</h3>
+                <p>From Gothic Grunge to Peaceful Classical — find your vibe.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤟</div>
+                <h3>Vibe Meter</h3>
+                <p>See your energy levels visualized with animated bars.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎵</div>
+                <h3>Track Spotlight</h3>
+                <p>Highlight your current favorite song on repeat.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Generation</h3>
+                <p>No signup, no wait — create your card in seconds.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title">🚀 How It Works</h2>
+        <div class="steps-container">
+            <div class="how-step">
+                <div class="how-number">1</div>
+                <h3>Enter Artists</h3>
+                <p>Tell us your top 3 artists</p>
+            </div>
+            <div class="how-arrow">→</div>
+            <div class="how-step">
+                <div class="how-number">2</div>
+                <h3>Pick a Track</h3>
+                <p>Share your current favorite</p>
+            </div>
+            <div class="how-arrow">→</div>
+            <div class="how-step">
+                <div class="how-number">3</div>
+                <h3>Choose Mood</h3>
+                <p>Select your overall vibe</p>
+            </div>
+            <div class="how-arrow">→</div>
+            <div class="how-step">
+                <div class="how-number">4</div>
+                <h3>Get Card</h3>
+                <p>Download & share!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FORM SECTION ===== -->
+    <section class="form-section" id="formSection">
+        <div class="container">
+
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="progress-step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Artists</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Track</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Mood</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Artists -->
+            <section class="form-step active" id="step1">
+                <h2> Your Top 3 Artists</h2>
+                <p class="step-desc">Tell us who you're vibing with lately</p>
+                <div class="input-group">
+                    <input type="text" id="artist1" placeholder="Artist #1" autocomplete="off">
+                    <input type="text" id="artist2" placeholder="Artist #2" autocomplete="off">
+                    <input type="text" id="artist3" placeholder="Artist #3" autocomplete="off">
+                </div>
+                <button class="btn next-btn" onclick="nextStep(1)">Next →</button>
+            </section>
+
+            <!-- Step 2: Favorite Track -->
+            <section class="form-step" id="step2">
+                <h2>🎵 Current Favorite Track</h2>
+                <p class="step-desc">The song on repeat right now</p>
+                <div class="input-group">
+                    <input type="text" id="trackName" placeholder="Track name" autocomplete="off">
+                    <input type="text" id="trackArtist" placeholder="Track artist" autocomplete="off">
+                </div>
+                <div class="btn-group">
+                    <button class="btn back-btn" onclick="prevStep(2)">← Back</button>
+                    <button class="btn next-btn" onclick="nextStep(2)">Next →</button>
+                </div>
+            </section>
+
+            <!-- Step 3: Mood -->
+            <section class="form-step" id="step3">
+                <h2>🌙 Your Overall Mood</h2>
+                <p class="step-desc">Pick the vibe that represents you</p>
+                <div class="mood-grid">
+                    <div class="mood-card" data-mood="Gothic Grunge" onclick="selectMood(this)">
+                        <span class="mood-emoji">🖤</span>
+                        <span class="mood-name">Gothic Grunge</span>
+                    </div>
+                    <button type="button" class="mood-card" data-mood="Cozy Lo-Fi" onclick="selectMood(this)">
+                        <span class="mood-emoji">☕</span>
+                        <span class="mood-name">Cozy Lo-Fi</span>
+                    </div>
+                    <div class="mood-card" data-mood="Electric Energy" onclick="selectMood(this)">
+                        <span class="mood-emoji">⚡</span>
+                        <span class="mood-name">Electric Energy</span>
+                    </div>
+                    <div class="mood-card" data-mood="Dreamy Synthwave" onclick="selectMood(this)">
+                        <span class="mood-emoji">🌌</span>
+                        <span class="mood-name">Dreamy Synthwave</span>
+                    </div>
+                    <div class="mood-card" data-mood="Chill R&B" onclick="selectMood(this)">
+                        <span class="mood-emoji">💜</span>
+                        <span class="mood-name">Chill R&B</span>
+                    </div>
+                    <div class="mood-card" data-mood="Indie Folk" onclick="selectMood(this)">
+                        <span class="mood-emoji">🍂</span>
+                        <span class="mood-name">Indie Folk</span>
+                    </div>
+                    <div class="mood-card" data-mood="Hype Hip-Hop" onclick="selectMood(this)">
+                        <span class="mood-emoji"></span>
+                        <span class="mood-name">Hype Hip-Hop</span>
+                    </div>
+                    <div class="mood-card" data-mood="Peaceful Classical" onclick="selectMood(this)">
+                        <span class="mood-emoji">🎻</span>
+                        <span class="mood-name">Peaceful Classical</span>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn back-btn" onclick="prevStep(3)">← Back</button>
+                    <button class="btn generate-btn" onclick="generateCard()">Generate Card ✨</button>
+                </div>
+            </section>
+
+            <!-- Generated Card Section -->
+            <section class="card-section" id="cardSection">
+                <h2>🎴 Your Music Identity Card</h2>
+                <div class="card-wrapper">
+                    <canvas id="musicCard" width="450" height="650"></canvas>
+                </div>
+                <div class="card-actions">
+                    <button class="btn download-btn" onclick="downloadCard()">⬇ Download Card</button>
+                    <button class="btn restart-btn" onclick="restartForm()"> Start Over</button>
+                </div>
+            </section>
+
+        </div>
+    </section>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+
+            <img
+                src="nexasoul-logo.png"
+                alt="NexaSoul Logo"
+                class="nexasoul-logo"
+            >
+
+            <span class="footer-brand"></span>
+        </div>
+
+        <p class="footer-text">
+            Developed by <strong>NexaSoul</strong> - Chandigarh University
+        </p>
+
+        <p class="footer-copy">
+            &copy; 2026 Moodify. All rights reserved.
+        </p>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
